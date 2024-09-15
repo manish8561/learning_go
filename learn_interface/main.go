@@ -3,6 +3,8 @@ package main
 import (
 	"fmt"
 	"math"
+
+	"example.com/demo/examples"
 )
 
 // common function
@@ -13,6 +15,7 @@ type Shape interface {
 type Square struct {
 	length float32
 }
+
 // implementation of interface with struct
 func (s *Square) Area() float32 {
 	return s.length * s.length
@@ -20,13 +23,13 @@ func (s *Square) Area() float32 {
 
 type Rectangle struct {
 	length float32
-	width float32
+	width  float32
 }
+
 // implementation of interface with struct
 func (s *Rectangle) Area() float32 {
 	return s.length * s.width
 }
-
 
 type Circle struct {
 	radius float32
@@ -53,4 +56,17 @@ func main() {
 	for i, v := range shapes {
 		fmt.Println(i, " Area: ", getArea(v))
 	}
+
+	// any type as interface
+	var test interface{}
+	test = "some text"
+	test = 10
+
+	val, ok := test.(int)
+	if ok {
+		fmt.Println(val)
+	}
+
+	//Second Example
+	examples.Example()
 }
