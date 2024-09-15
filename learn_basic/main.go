@@ -2,6 +2,7 @@ package main
 
 import "fmt"
 
+// defining constants
 const (
 	first = iota + 2
 	second
@@ -12,6 +13,12 @@ const (
 )
 
 func main() {
+	mmap := map[string]string{"0":"a", "1":"b", "2":"c"}
+
+	for key,value := range mmap{
+		fmt.Println("Key: ", key, "Value: ", value)
+	}
+
 	fmt.Println("const values", first, second, third, fourth, fivth, sixth)
 
 	arr := [...]int{3, 5, 6, 4, 8, 7, 9, 1}

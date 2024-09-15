@@ -17,6 +17,11 @@ func main() {
 	b := "hello2"
 	fmt.Println(b[1])
 
+	c := "Manish Sharma is an awesome sr fullstack deverloper cum manager"
+
+	for index, char := range c{
+		fmt.Println("index: ", index, "ascii: ", char, "char: ", string(char) )
+	}
 	/*
 		Contains("test", "es")	true
 		Count("test", "t")	2
