@@ -268,10 +268,10 @@ func worker(i int, wg *sync.WaitGroup) {
 
 func Example8() {
 	defer DisplayLine()
-
+	fmt.Println("Example 8 simple example of wait group with channel")
 	var wg sync.WaitGroup
 
-	for i := 1; i <= 5; i++ {
+	for i := 1; i <= 10; i++ {
 		wg.Add(1)
 		go func(i int) {
 			worker(i, &wg)
@@ -292,6 +292,7 @@ func worker2(i int, check chan bool) {
 
 func Example9() {
 	defer DisplayLine()
+	fmt.Println("Example 9 wait group with channel synchronization")
 
 	chan1 := make(chan bool)
 	for i := 1; i <= 5; i++ {
@@ -312,7 +313,7 @@ func saving(p int) {
 }
 func Example10() {
 	defer DisplayLine()
-
+	fmt.Println("Example 10 with sync.Once")
 	paise := 0
 	var once sync.Once
 	for i := 0; i < 3; i++ {
@@ -336,7 +337,7 @@ func functionSecond(chanl2 chan int) {
 }
 func Example11() {
 	defer DisplayLine()
-
+	fmt.Println("Example 11 channels with select statements")
 	chanl1 := make(chan string)
 	chanl2 := make(chan int)
 
@@ -358,7 +359,7 @@ func multiplyWithChannel(ch chan int){
 func Example12(){
 	defer DisplayLine()
 	fmt.Println("Example 12 basic channel")
-	
+
 	ch :=make(chan int)
 	fmt.Println("Hello from example 12")
 	go multiplyWithChannel(ch)

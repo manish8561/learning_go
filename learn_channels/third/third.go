@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"sync"
 	"time"
+	"demo/examples"
 )
 
 // efficient memory management for extensive memory consumptions
@@ -19,6 +20,9 @@ func createObject() *SomeObject {
 }
 
 func Example1() {
+	defer examples.DisplayLine()
+	fmt.Println("Third Example 1 memory management")
+	
 	// var objects []*SomeObject
 	var memoryPiece int
 	start := time.Now()

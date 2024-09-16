@@ -3,6 +3,7 @@ package main
 import (
 	"demo/examples"
 	"demo/second"
+	"demo/third"
 )
 
 func main() {
@@ -28,23 +29,23 @@ func main() {
 	//case 7
 	examples.Example7()
 
-	// //case 8
-	// examples.Example8()
+	//case 8
+	examples.Example8()
 
-	// //case 9
-	// examples.Example9()
+	//case 9
+	examples.Example9()
 
-	// //case 10
-	// examples.Example10()
+	//case 10
+	examples.Example10()
 
-	// //case 11
-	// examples.Example11()
+	//case 11
+	examples.Example11()
 
 	// synchronization example
 	second.Example1()
 
-	// // memory management example
-	// third.Example1()
+	// memory management example
+	third.Example1()
 
 	// basic example
 	examples.Example12()

@@ -12,7 +12,7 @@ import (
 // synchronization with mutex and atomic
 func Example1() {
 	defer examples.DisplayLine()
-	fmt.Println("Example 1 from second for synchornization")
+	fmt.Println("Second Example 1 for synchornization with mutex")
 
 	var counter int32
 	var wg sync.WaitGroup
@@ -34,4 +34,10 @@ func Example1() {
 	fmt.Println("Counter: ", counter)
 	fmt.Println("Atomic counter state: ", atomic.LoadInt32(&counter))
 	fmt.Println("Time: ", end)
+}
+// simple wait group example
+func printingChannel(ch chan int, wg *sync.WaitGroup){
+	defer wg.Done()
+
+	fmt.Println("Printing the value from the channel", <-ch)
 }
