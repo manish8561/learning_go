@@ -4,10 +4,16 @@ import (
 	"fmt"
 	"sync"
 	"time"
+	"demo/examples"
+	"sync/atomic"
+
 )
 
-// synchronoziation with mutex and atomic
+// synchronization with mutex and atomic
 func Example1() {
+	defer examples.DisplayLine()
+	fmt.Println("Example 1 from second for synchornization")
+
 	var counter int32
 	var wg sync.WaitGroup
 	start := time.Now()
@@ -18,7 +24,7 @@ func Example1() {
 		go func() {
 			mu.Lock()
 			counter++
-			// atomic.AddInt32(&counter, 1)
+			atomic.AddInt32(&counter, 1)
 			mu.Unlock()
 			wg.Done()
 		}()
@@ -26,6 +32,6 @@ func Example1() {
 	wg.Wait()
 	end := time.Since(start)
 	fmt.Println("Counter: ", counter)
-	// fmt.Println(atomic.LoadInt32(&counter))
+	fmt.Println("Atomic counter state: ", atomic.LoadInt32(&counter))
 	fmt.Println("Time: ", end)
 }

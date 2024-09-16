@@ -8,6 +8,10 @@ import (
 	"time"
 )
 
+func DisplayLine(){
+	fmt.Println("---------------------------------------------------------------------")
+}
+
 // Custom type for channel values
 type Message struct {
 	Sender    string
@@ -17,6 +21,7 @@ type Message struct {
 
 // channel with custom type
 func Example1() {
+	defer DisplayLine()
 	// Creating a channel that carries values of type 'Message'
 	messageChannel := make(chan Message)
 
@@ -42,8 +47,11 @@ func Example1() {
 
 }
 
-// channels with select statements
+// channels with select statements and timput in select
 func Example2() {
+	defer DisplayLine()
+
+	fmt.Println("Example 2 with select statements")
 	c1 := make(chan string, 1)
 	go func() {
 		time.Sleep(2 * time.Second)
@@ -70,11 +78,12 @@ func Example2() {
 	}
 }
 
-// example with mutex and atomic
+// example with wait group and atomic
 func Example3() {
+	defer DisplayLine()
 
+	fmt.Println("Example 3 for atomic counters and wait group")
 	var ops atomic.Uint64
-
 	var wg sync.WaitGroup
 
 	for i := 0; i < 50; i++ {
@@ -82,16 +91,13 @@ func Example3() {
 
 		go func() {
 			for c := 0; c < 1000; c++ {
-
 				ops.Add(1)
 			}
-
 			wg.Done()
 		}()
 	}
 
 	wg.Wait()
-
 	fmt.Println("ops:", ops.Load())
 }
 
@@ -107,10 +113,12 @@ func (c *Container) inc(name string) {
 	c.counters[name]++
 }
 
-// example with wait group
+// example with wait group and mutex
 func Example4() {
-	c := Container{
+	defer DisplayLine()
 
+	fmt.Println("Example 4 wait group and mutex")
+	c := Container{
 		counters: map[string]int{"a": 0, "b": 0},
 	}
 
@@ -132,9 +140,11 @@ func Example4() {
 	fmt.Println(c.counters)
 }
 
-// example of atomic without mutex
+// example of atomic without mutex and stateful go routines
 func Example5() {
+	defer DisplayLine()
 
+	fmt.Println("Example 5 with stateful go routine")
 	type readOp struct {
 		key  int
 		resp chan int
@@ -169,7 +179,8 @@ func Example5() {
 			for {
 				read := readOp{
 					key:  rand.Intn(5),
-					resp: make(chan int)}
+					resp: make(chan int),
+				}
 				reads <- read
 				<-read.resp
 				atomic.AddUint64(&readOps, 1)
@@ -184,7 +195,8 @@ func Example5() {
 				write := writeOp{
 					key:  rand.Intn(5),
 					val:  rand.Intn(100),
-					resp: make(chan bool)}
+					resp: make(chan bool),
+				}
 				writes <- write
 				<-write.resp
 				atomic.AddUint64(&writeOps, 1)
@@ -204,6 +216,9 @@ func Example5() {
 
 // loops with channels for receiving and check channel is closed or not
 func Example6() {
+	defer DisplayLine()
+
+	fmt.Println("Example 6 for basic example and close channel")
 	c := make(chan string)
 
 	go initStrings(c)
@@ -227,6 +242,10 @@ func initStrings(ch chan string) {
 
 // buffered channels in golang
 func Example7() {
+	defer DisplayLine()
+
+	fmt.Println("Example 7 buffered channels")
+
 	ch := make(chan int, 3)
 
 	ch <- 1
@@ -248,6 +267,8 @@ func worker(i int, wg *sync.WaitGroup) {
 }
 
 func Example8() {
+	defer DisplayLine()
+
 	var wg sync.WaitGroup
 
 	for i := 1; i <= 5; i++ {
@@ -270,6 +291,8 @@ func worker2(i int, check chan bool) {
 }
 
 func Example9() {
+	defer DisplayLine()
+
 	chan1 := make(chan bool)
 	for i := 1; i <= 5; i++ {
 		// go func(chan bool) {
@@ -288,6 +311,8 @@ func saving(p int) {
 	fmt.Println("Saving: ", p)
 }
 func Example10() {
+	defer DisplayLine()
+
 	paise := 0
 	var once sync.Once
 	for i := 0; i < 3; i++ {
@@ -310,6 +335,8 @@ func functionSecond(chanl2 chan int) {
 	chanl2 <- 220
 }
 func Example11() {
+	defer DisplayLine()
+
 	chanl1 := make(chan string)
 	chanl2 := make(chan int)
 
@@ -329,20 +356,12 @@ func multiplyWithChannel(ch chan int){
 }
 
 func Example12(){
+	defer DisplayLine()
+	fmt.Println("Example 12 basic channel")
+	
 	ch :=make(chan int)
 	fmt.Println("Hello from example 12")
 	go multiplyWithChannel(ch)
 	ch <- 10
 	fmt.Println("Bye from example 12")
-}
-
-// example with buffered channel
-func Example13(){
-	ch :=make(chan string, 5)
-	ch <- "abc"
-	ch <- "def"
-	ch <- "ghi"
-	ch <- "jklm"
-
-	fmt.Println("Length of the channel: ", len(ch))
 }
