@@ -214,13 +214,13 @@ func Example6() {
 			fmt.Println("Channel is closed")
 			break
 		}
-		fmt.Println("received from: ", res)
+		fmt.Println("Channel is Open: ", ok, res)
 	}
 }
 
 func initStrings(ch chan string) {
 	for i := 0; i < 5; i++ {
-		ch <- "Manish"
+		ch <- "Go Guruji Manish"
 	}
 	close(ch)
 }
@@ -322,4 +322,27 @@ func Example11() {
 	case val2 := <-chanl2:
 		fmt.Println(val2)
 	}
+}
+// basic example
+func multiplyWithChannel(ch chan int){
+	fmt.Println(100 * <-ch)
+}
+
+func Example12(){
+	ch :=make(chan int)
+	fmt.Println("Hello from example 12")
+	go multiplyWithChannel(ch)
+	ch <- 10
+	fmt.Println("Bye from example 12")
+}
+
+// example with buffered channel
+func Example13(){
+	ch :=make(chan string, 5)
+	ch <- "abc"
+	ch <- "def"
+	ch <- "ghi"
+	ch <- "jklm"
+
+	fmt.Println("Length of the channel: ", len(ch))
 }
