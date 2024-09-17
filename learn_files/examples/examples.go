@@ -24,7 +24,7 @@ func Reading(dataCh chan<- string, wg *sync.WaitGroup) {
 		fmt.Println(line)
 		dataCh <- line
 	}
-	defer close(dataCh)
+	close(dataCh)
 	file.Close()
 
 	if err := Scanner.Err(); err != nil {

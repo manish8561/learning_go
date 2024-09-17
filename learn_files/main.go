@@ -5,6 +5,7 @@ import (
 	"sync"
 
 	"exmaple.com/demo/d2/examples"
+	"exmaple.com/demo/d2/second"
 )
 
 /* reading and writing files using channels */
@@ -19,5 +20,9 @@ func main() {
 	wg.Wait()
 
 	fmt.Println("Printing from channels")
+
+	//second example
+	second.CreateFile()
+	second.ReadFile()
 
 }

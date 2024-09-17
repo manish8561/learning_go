@@ -25,7 +25,8 @@ func (s *Stack) Pop() (int, error) {
 	if s.IsEmpty() {
 		return 0, errors.New("Underflow")
 	}
-	ele := s.items[len(s.items)-1]
-	s.items = s.items[:len(s.items)-1]
+	l := len(s.items)
+	ele := s.items[l-1]
+	s.items = s.items[:l-1]
 	return ele, nil
 }

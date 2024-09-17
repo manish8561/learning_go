@@ -42,7 +42,7 @@ func main() {
 	q.Enqueue(13)
 	q.Enqueue(13)
 
-	fmt.Println("queue", q)
+	fmt.Println("queue", q, q.IsEmpty())
 
 	v, err := q.Peek()
 	fmt.Println("queue peek", q, v, err)
