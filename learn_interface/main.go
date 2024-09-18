@@ -5,6 +5,7 @@ import (
 	"math"
 
 	"example.com/demo/examples"
+	"example.com/demo/second"
 )
 
 // common function
@@ -69,4 +70,7 @@ func main() {
 
 	//Second Example
 	examples.Example()
+
+	//second Example
+	second.Example()
 }
