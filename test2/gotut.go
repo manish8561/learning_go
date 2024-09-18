@@ -24,7 +24,7 @@ func say(s string) {
 		fmt.Println(s)
 		time.Sleep(time.Millisecond * 100)
 		if i == 2 {
-			panic("On dear, a 2")
+			panic("On dear, i= 2")
 		}
 	}
 }
