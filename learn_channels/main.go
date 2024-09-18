@@ -2,6 +2,7 @@ package main
 
 import (
 	"demo/examples"
+	"demo/fourth"
 	"demo/second"
 	"demo/third"
 )
@@ -22,9 +23,9 @@ func main() {
 
 	//case 5
 	examples.Example5()
-	
+
 	//case 6
- 	examples.Example6()
+	examples.Example6()
 
 	//case 7
 	examples.Example7()
@@ -49,5 +50,8 @@ func main() {
 
 	// basic example
 	examples.Example12()
+
+	// sync map example
+	fourth.Example()
 
 }
