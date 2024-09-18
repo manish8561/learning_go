@@ -47,7 +47,7 @@ func Example1() {
 
 }
 
-// channels with select statements and timput in select
+// channels with select statements and timeout in select
 func Example2() {
 	defer DisplayLine()
 
@@ -281,7 +281,7 @@ func Example8() {
 	wg.Wait()
 }
 
-// same above function using channel synchronization
+// same above function using channel synchronization to wait go routines
 func worker2(i int, check chan bool) {
 	fmt.Printf("Worker2 %d starting\n", i)
 
@@ -292,7 +292,7 @@ func worker2(i int, check chan bool) {
 
 func Example9() {
 	defer DisplayLine()
-	fmt.Println("Example 9 wait group with channel synchronization")
+	fmt.Println("Example 9 waiting with channel synchronization")
 
 	chan1 := make(chan bool)
 	for i := 1; i <= 5; i++ {
