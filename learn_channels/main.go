@@ -5,6 +5,7 @@ import (
 	"demo/fourth"
 	"demo/second"
 	"demo/third"
+	"demo/fifth"
 )
 
 func main() {
@@ -54,4 +55,6 @@ func main() {
 	// sync map example
 	fourth.Example()
 
+	//interview question
+	fifth.Example()
 }

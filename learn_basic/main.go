@@ -44,7 +44,3 @@ func main() {
 	fmt.Println(arr)
 }
 
-/*
-https://www.youtube.com/watch?v=lwKPqllpYCQ
-
-*/
