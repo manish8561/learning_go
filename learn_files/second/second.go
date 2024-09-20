@@ -2,7 +2,6 @@ package second
 
 import (
 	"fmt"
-	"io/ioutil"
 	"log"
 	"os"
 )
@@ -28,12 +27,12 @@ func CreateFile() {
 	fmt.Printf("Length: %d bytes \n", len)
 }
 
-func ReadFile(){
+func ReadFile() {
 	fmt.Println("Reading from the file")
 
 	fileName := "file.txt"
 
-	data, err := ioutil.ReadFile(fileName)
+	data, err := os.ReadFile(fileName)
 
 	if err != nil {
 		log.Panicf("failed reading data from file %s", err)
@@ -42,6 +41,5 @@ func ReadFile(){
 	fmt.Printf("\n File name: %s \n", fileName)
 	fmt.Printf("\n Size: %d bytes \n", len(data))
 	fmt.Printf("\n Data: %s \n", data)
-	
 
-}	
+}
