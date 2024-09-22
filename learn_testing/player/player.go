@@ -1,6 +1,13 @@
 package player
 
-import "errors"
+import (
+	"encoding/json"
+	"errors"
+	"fmt"
+	"io"
+	"io/ioutil"
+	"os"
+)
 
 type Stats struct {
 	Name      string
@@ -9,6 +16,11 @@ type Stats struct {
 	Assits    int8
 	TrunOvers int8
 	Rebounds  int8
+}
+
+type Player struct {
+	Name string `json:"name"`
+	Age int		`json:"age"`
 }
 
 func HadAGoodGame(stats *Stats) (bool, error) {
@@ -27,4 +39,34 @@ func HadAGoodGame(stats *Stats) (bool, error) {
 	}
 
 	return false, nil
+}
+
+func ProcessData(file string) error {
+	f, err := os.Open(file)
+	if err != nil {
+		return err
+	}
+	defer f.Close()
+
+	return unmarshalAndPrint(f)
+}
+
+func unmarshalAndPrint(f io.Reader) error {
+	data, err := ioutil.ReadAll(f)
+	if err != nil {
+		return err
+	}
+
+	var players []Player
+
+	err = json.Unmarshal(data, &players)
+	if err != nil {
+		return err
+	}
+
+	for _, p := range players {
+		fmt.Println("Player Name: ", p.Name, p.Age)
+	}
+
+	return nil
 }
