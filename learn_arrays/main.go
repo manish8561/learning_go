@@ -1,6 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+
+	"example.com/arrays/examples"
+)
 
 func main() {
 	// Declare and initialize an array
@@ -93,4 +97,8 @@ func sliceExamples() {
 	slc[2] = 100
 
 	fmt.Println("arr", arr3, "slc", slc)
+
+	// Another example
+	fmt.Println("---------------------------------------------")
+	examples.Example1()
 }
