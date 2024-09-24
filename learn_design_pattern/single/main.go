@@ -6,6 +6,7 @@ import (
 	"sync"
 	"time"
 
+	"example.com/single/examples"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 	"go.mongodb.org/mongo-driver/mongo/readpref"
@@ -56,8 +57,13 @@ func getSingleTonInstance() *Single {
 }
 
 func main() {
+	// another example of singleton
+	examples.Example1()
+
+	
 	for i := 0; i < 30; i++ {
 		go getSingleTonInstance()
 	}
 	fmt.Scanln()
+
 }
