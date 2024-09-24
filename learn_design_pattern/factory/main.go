@@ -2,6 +2,8 @@ package main
 
 import "fmt"
 
+// Creational Design Pattern: Factory Method Design Pattern
+
 // Animal interface defines methods that all concrete animals should implement.
 type Animal interface {
 	Speak() string

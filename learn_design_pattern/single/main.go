@@ -16,7 +16,7 @@ import (
 * There are 3 types of design patterns:
 * Creational -> Singleton, Factory Method, Abstract Factory
 * Structural -> Adaptor, Bridge, etc.
-* Behavioural -> Command, Interperter, etc.
+* Behavioural -> Command, Interperter, Observer etc.
  */
 // one of the design pattern in golang Creational Design pattern
 // singleton desing pattern below code
