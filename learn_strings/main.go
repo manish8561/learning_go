@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"math"
 	s "strings"
 )
 
@@ -19,8 +20,8 @@ func main() {
 
 	c := "Manish Sharma is an awesome sr fullstack deverloper cum manager"
 
-	for index, char := range c{
-		fmt.Println("index: ", index, "ascii: ", char, "char: ", string(char) )
+	for index, char := range c {
+		fmt.Println("index: ", index, "ascii: ", char, "char: ", string(char))
 	}
 	/*
 		Contains("test", "es")	true
@@ -65,6 +66,13 @@ func main() {
 	// use the name to call the function
 	fmt.Println(add(3, 4)) // => 7
 
+	fmt.Println("------------------------------")
+
+	// example to learn steps required to convert to pailedrome string
+	s := "abcbb"
+	r := convertToPailedromeString(s)
+	fmt.Println("result count", r)
+
 }
 
 func split(sum int) (x, y int) {
@@ -80,4 +88,16 @@ func sum(nums ...int) {
 		total += num
 	}
 	fmt.Println(total)
+}
+// example to learn steps required to convert to pailedrome string
+func convertToPailedromeString(s string) int {
+	cnt := 0.0
+	for i := 0; i < len(s)/2; i++ {
+		if s[i] != s[len(s)-1-i] {
+			cnt +=(math.Abs(float64(rune(s[i]) - rune(s[len(s)-1-i]))))
+		}
+	}
+
+	return int(cnt)
+
 }
