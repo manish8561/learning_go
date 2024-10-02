@@ -3,12 +3,17 @@ package main
 import (
 	"fmt"
 	"math"
-	s "strings"
+	"strings"
+
+	"example.com/demo/examples"
 )
 
 func main() {
+	// some interview questions from IBM
+	examples.Example1()
+
 	/* Need to import strings as s */
-	fmt.Println(s.Contains("test", "e"))
+	fmt.Println(strings.Contains("test", "e"))
 
 	/* Build in */
 	fmt.Println(len("hello")) // => 5
@@ -89,12 +94,13 @@ func sum(nums ...int) {
 	}
 	fmt.Println(total)
 }
+
 // example to learn steps required to convert to pailedrome string
 func convertToPailedromeString(s string) int {
 	cnt := 0.0
 	for i := 0; i < len(s)/2; i++ {
 		if s[i] != s[len(s)-1-i] {
-			cnt +=(math.Abs(float64(rune(s[i]) - rune(s[len(s)-1-i]))))
+			cnt += (math.Abs(float64(rune(s[i]) - rune(s[len(s)-1-i]))))
 		}
 	}
 
