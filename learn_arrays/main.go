@@ -25,8 +25,8 @@ func main() {
 
 	// Iterate over the array using a range loop
 	fmt.Println("Array elements with index:")
-	for i, v := range arr {
-		fmt.Println(i, v)
+	for index, v := range arr {
+		fmt.Println(index, v)
 	}
 
 	// Multidimensional array
@@ -50,6 +50,7 @@ func main() {
 	fmt.Println(a1 == a3)
 	fmt.Println(a2 == a3)
 
+	// slices examples
 	sliceExamples()
 }
 
@@ -60,6 +61,9 @@ func modifyArray(arr *[5]int) {
 
 // slices examples
 func sliceExamples() {
+	fmt.Println("---------------------------------------------")
+
+	// array
 	arr := [...]string{"This", "is", "the", "tutorial", "of", "Go", "slices"}
 
 	// Display array

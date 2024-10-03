@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-// testing for benchmarking with test file
+// testing for benchmarking with test file check the main_test.go file
 func SquareValue(v int) int{
 	return v*v
 }
