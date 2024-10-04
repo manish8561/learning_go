@@ -5,7 +5,9 @@ import (
 	"net/http"
 	"time"
 )
+// interview question
 
+// using context with api server request with timeout to break the request
 func hello(w http.ResponseWriter, req *http.Request) {
 
 	ctx := req.Context()

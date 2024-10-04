@@ -6,6 +6,8 @@ import (
 	"time"
 )
 
+// interview question
+
 // example to example workers using go routines and channel
 // 3 workers 100 tasks with struct and print completed tasks
 

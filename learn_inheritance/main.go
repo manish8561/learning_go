@@ -2,6 +2,7 @@ package main
 
 import "fmt"
 
+// interview question
 type Person struct{
 	Name string
 	Age int

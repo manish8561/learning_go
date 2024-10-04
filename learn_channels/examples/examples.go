@@ -8,7 +8,7 @@ import (
 	"time"
 )
 
-func DisplayLine(){
+func DisplayLine() {
 	fmt.Println("---------------------------------------------------------------------")
 }
 
@@ -78,7 +78,13 @@ func Example2() {
 	}
 }
 
-// example with wait group and atomic
+// example with wait group and atomic perform low-level call
+/*
+ * Use Cases
+ * Safe access to shared variables
+ * Performance optimization
+ * Lock-free synchronization
+ */
 func Example3() {
 	defer DisplayLine()
 
@@ -100,7 +106,7 @@ func Example3() {
 	wg.Wait()
 	fmt.Println("ops:", ops.Load())
 }
-
+// interview question
 type Container struct {
 	mu       sync.Mutex
 	counters map[string]int
@@ -239,7 +245,7 @@ func initStrings(ch chan string) {
 	}
 	close(ch)
 }
-
+// interview question
 // buffered channels in golang
 func Example7() {
 	defer DisplayLine()
@@ -281,7 +287,7 @@ func Example8() {
 	}
 	wg.Wait()
 }
-
+// interview question
 // same above function using channel synchronization to wait go routines
 func worker2(i int, check chan bool) {
 	fmt.Printf("Worker2 %d starting\n", i)
@@ -352,16 +358,17 @@ func Example11() {
 		fmt.Println(val2)
 	}
 }
+
 // basic example
-func multiplyWithChannel(ch chan int){
+func multiplyWithChannel(ch chan int) {
 	fmt.Println(100 * <-ch)
 }
 
-func Example12(){
+func Example12() {
 	defer DisplayLine()
 	fmt.Println("Example 12 basic channel")
 
-	ch :=make(chan int)
+	ch := make(chan int)
 	fmt.Println("Hello from example 12")
 	go multiplyWithChannel(ch)
 	ch <- 10

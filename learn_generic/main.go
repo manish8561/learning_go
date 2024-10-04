@@ -2,6 +2,7 @@ package main
 
 import "fmt"
 
+// interview question
 // generic function example in golang
 func Sum[T int | float32 | float64](a, b T) T {
 	return a + b

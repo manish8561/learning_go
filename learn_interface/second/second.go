@@ -2,6 +2,7 @@ package second
 
 import "fmt"
 
+// interview question
 type Shape interface {
 	Area() float64
 }

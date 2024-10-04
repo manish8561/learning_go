@@ -2,6 +2,8 @@ package main
 
 import "fmt"
 
+// interview question
+
 /* test for substring find in the string */
 func check(L, N string) bool {
 	M := make(map[int]int)

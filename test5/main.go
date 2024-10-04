@@ -1,6 +1,8 @@
 package main
 
 import "fmt"
+
+// interview question
 // simple example with defer, panic and recover
 func main() {
 	defer func ()  {

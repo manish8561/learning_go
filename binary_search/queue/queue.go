@@ -2,6 +2,8 @@ package queue
 
 import "errors"
 
+// interview question
+
 // type QueueInterface interface {
 // 	Enqueue(int)
 // 	Dequeue() (int, error)

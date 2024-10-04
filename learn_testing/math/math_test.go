@@ -2,6 +2,7 @@ package math
 
 import "testing"
 
+// interview question
 func TestAdd(t *testing.T) {
 	actualOutput := Add(2,2)
 	expectedOutput := 4

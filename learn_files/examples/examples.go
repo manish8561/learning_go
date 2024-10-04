@@ -7,6 +7,7 @@ import (
 	"os"
 	"sync"
 )
+// interview question
 
 func Reading(dataCh chan<- string, wg *sync.WaitGroup) {
 	defer wg.Done()

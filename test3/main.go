@@ -2,6 +2,7 @@ package main
 
 import "fmt"
 
+// interview question
 /**
  * question to get counts of repeated elements from the array and also get the maximum value
  */

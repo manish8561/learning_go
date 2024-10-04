@@ -1,3 +1,3 @@
-module example.com/demo/d
+module example.com/demo
 
 go 1.22.2

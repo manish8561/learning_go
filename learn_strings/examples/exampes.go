@@ -2,6 +2,7 @@ package examples
 
 import "fmt"
 
+// interview question
 /*
  * find out the odd from the series of string
  * ["ABC","BCD","CDE","DFI"]

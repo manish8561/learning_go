@@ -3,10 +3,10 @@ package main
 import (
 	"fmt"
 
-	"example.com/demo/d/queue"
-	"example.com/demo/d/stack"
+	"example.com/demo/queue"
+	"example.com/demo/stack"
 )
-
+// interview question
 func binarySearch(arr []int, target int) int {
 	left, right := 0, len(arr)-1
 

@@ -84,7 +84,7 @@ func Example4() {
 		}
 	}
 }
-
+// worker example with channels
 func Example5() {
 
 	jobs := make(chan int, 100)
