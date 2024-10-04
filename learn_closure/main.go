@@ -2,6 +2,7 @@ package main
 
 import "fmt"
 
+//closure function returning function and return value
 func adder() func(int) int {
 	sum := 0
 	return func(x int) int {
