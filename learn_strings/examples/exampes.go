@@ -55,9 +55,10 @@ func Example1() {
 	fmt.Println("Result: ", r)
 }
 
+// interview question
 // strings array to be sorted in ascending order
 // bubble sort
-func SortString(arr []string) []string {
+func sortString(arr []string) []string {
 	for i := 0; i < len(arr); i++ {
 		for j := 0; j < len(arr)-1; j++ {
 			if arr[j+1] < arr[j] {
@@ -73,5 +74,5 @@ func Example2() {
 
 	arr := []string{"Manish", "Sharma", "Ram", "Abhi", "Rahul", "Gaurav", "Vikram"}
 
-	fmt.Println("Sorted arr of the string: ", SortString(arr))
+	fmt.Println("Sorted arr of the string: ", sortString(arr))
 }
