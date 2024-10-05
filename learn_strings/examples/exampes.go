@@ -35,7 +35,6 @@ func hasStepPattern(s string) bool {
 	return true
 }
 
-
 // Function to find the odd string in the series
 func findOdd(series []string) string {
 	for _, str := range series {
@@ -49,9 +48,30 @@ func findOdd(series []string) string {
 func Example1() {
 	fmt.Println("-----------------------------------")
 	// series := []string{"ABCDE", "DFIMR", "BCDEF", "CDEFG", "DEFGH"}
-	series := []string{"ACE","BDF","CEG","DGF"}
+	series := []string{"ACE", "BDF", "CEG", "DGF"}
 
 	r := findOdd(series)
 
 	fmt.Println("Result: ", r)
+}
+
+// strings array to be sorted in ascending order
+// bubble sort
+func SortString(arr []string) []string {
+	for i := 0; i < len(arr); i++ {
+		for j := 0; j < len(arr)-1; j++ {
+			if arr[j+1] < arr[j] {
+				arr[j+1], arr[j] = arr[j], arr[j+1]
+			}
+		}
+	}
+	return arr
+}
+
+func Example2() {
+	fmt.Println("---------------------------------")
+
+	arr := []string{"Manish", "Sharma", "Ram", "Abhi", "Rahul", "Gaurav", "Vikram"}
+
+	fmt.Println("Sorted arr of the string: ", SortString(arr))
 }

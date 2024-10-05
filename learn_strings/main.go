@@ -78,6 +78,9 @@ func main() {
 	r := convertToPailedromeString(s)
 	fmt.Println("result count", r)
 
+	// array example in string
+	examples.Example2()
+
 }
 
 func split(sum int) (x, y int) {
