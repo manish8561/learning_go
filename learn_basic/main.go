@@ -11,6 +11,7 @@ const (
 	fivth = "mmmmmmm"
 	sixth
 )
+
 // we can also use package reflect.TypeOf or %T in Printf
 // interview question
 // type switch example in golang
@@ -27,11 +28,10 @@ func do(i interface{}) {
 	}
 }
 
-
 func main() {
-	mmap := map[string]string{"0":"a", "1":"b", "2":"c"}
+	mmap := map[string]string{"0": "a", "1": "b", "2": "c"}
 
-	for key,value := range mmap{
+	for key, value := range mmap {
 		fmt.Println("Key: ", key, "Value: ", value)
 	}
 
@@ -39,20 +39,23 @@ func main() {
 
 	arr := [...]int{3, 5, 6, 4, 8, 7, 9, 1}
 
-	// bubble sort
+	// bubble sort desecending order
 	for i := 0; i < len(arr); i++ {
 		for j := 0; j < len(arr)-1; j++ {
-			if arr[j] > arr[j+1] {
-				arr[j], arr[j+1] = arr[j+1], arr[j]
+			// if arr[j] > arr[j+1] {
+			// 	arr[j], arr[j+1] = arr[j+1], arr[j]
+			// }
+			if arr[j] < arr[j+1] {
+				arr[j+1], arr[j] = arr[j], arr[j+1]
 			}
 		}
 	}
 	fmt.Println(arr)
 
-	// insertion sort in desending order
+	// insertion sort in ascending order
 	for i := 0; i < len(arr); i++ {
 		for j := 0; j < len(arr); j++ {
-			if arr[i] > arr[j] {
+			if arr[i] < arr[j] {
 				arr[i], arr[j] = arr[j], arr[i]
 			}
 		}
@@ -65,4 +68,3 @@ func main() {
 	do("hello")
 	do(true)
 }
-
