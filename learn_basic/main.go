@@ -12,6 +12,10 @@ const (
 	sixth
 )
 
+func addLine() {
+	fmt.Println("===================================================")
+}
+
 // we can also use package reflect.TypeOf or %T in Printf
 // interview question
 // type switch example in golang
@@ -37,6 +41,8 @@ func main() {
 
 	fmt.Println("const values", first, second, third, fourth, fivth, sixth)
 
+	addLine()
+
 	arr := [...]int{3, 5, 6, 4, 8, 7, 9, 1}
 
 	// bubble sort desecending order
@@ -61,10 +67,48 @@ func main() {
 		}
 	}
 	fmt.Println(arr)
+	addLine()
 
 	// example to test types with switch
 	do(21)
 	do(3.14)
 	do("hello")
 	do(true)
+	addLine()
+
+	// new keyword example in golang
+	newExample()
+}
+
+func newExample() {
+	// diff b/w new and make in golang
+	/*
+	 * new() allocates memory and returns a pointer to the newly allocated zero value of the specified type.
+	 * make() is used for initializing slices, maps, and channels, and it returns an initialized (but not zeroed) value of that type.
+	 */
+
+	// Using new() to allocate memory for an int
+	numPtr := new(int) // numPtr is of type *int, pointing to a zero value (0)
+
+	fmt.Println("Value of numPtr:", *numPtr) // Dereferencing to get the value (initially 0)
+
+	// Updating the value through the pointer
+	*numPtr = 42
+
+	fmt.Println("Updated value of numPtr:", *numPtr) // Dereferencing to get the updated value (42)
+
+	// Using new() to allocate memory for a custom struct
+	type Person struct {
+		name string
+		age  int
+	}
+
+	personPtr := new(Person)                                           // personPtr is of type *Person, pointing to a zeroed Person struct
+	fmt.Println("Person:", *personPtr, "Memory Address: ", &personPtr) // Output: {"" 0}
+
+	// Updating the struct through the pointer
+	personPtr.name = "Alice"
+	personPtr.age = 30
+
+	fmt.Println("Updated Person:", *personPtr) // Output: {Alice 30}
 }
