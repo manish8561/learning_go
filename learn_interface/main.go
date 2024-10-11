@@ -8,7 +8,7 @@ import (
 	"example.com/demo/second"
 )
 
-// common function
+// common function polymorphism
 type Shape interface {
 	Area() float32
 }
@@ -50,7 +50,7 @@ func main() {
 	c := Circle{radius: 2.5}
 	r := Rectangle{length: 4.5, width: 2.5}
 
-	// make slice for common types using interface
+	// make slice for common types using interface (polymorphism)
 	shapes := []Shape{&s, &c, &r}
 
 	//range on slice

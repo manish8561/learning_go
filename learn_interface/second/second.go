@@ -9,7 +9,7 @@ type Shape interface {
 
 type Rectangle struct {
 	Length float64
-	Width float64
+	Width  float64
 }
 
 func (r Rectangle) Area() float64 {
@@ -20,15 +20,16 @@ type Square struct {
 	Length float64
 }
 
-func (s Square) Area() float64{
+func (s Square) Area() float64 {
 	return s.Length * s.Length
 }
 
-func PrintArea(s Shape)  {
+func PrintArea(s Shape) {
 	fmt.Println(s.Area())
 }
 
-func Example () {
+func Example() {
+	// polymorphism done using interfaces
 	r := Rectangle{10.5, 20.8}
 	s := Square{2.5}
 
