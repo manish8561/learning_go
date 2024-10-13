@@ -2,6 +2,42 @@ package main
 
 import "fmt"
 
+
+/**
+ * Interview questions:
+
+  - What is escape analysis in golang?
+    Escape analysis in Go is a compiler technique used to determine whether variables can be safely allocated on the stack or if they need to be moved to the heap. It helps improve memory management and performance by identifying where data lives during program execution.
+
+    Key points:
+    Stack vs. Heap Allocation:
+
+    Stack Allocation: Fast memory allocation that occurs within function calls and is automatically cleaned up when the function returns. If a variable’s lifetime ends within the function, it can be allocated on the stack.
+    Heap Allocation: Slower memory allocation that allows variables to persist beyond the function call, requiring garbage collection for cleanup.
+    How Escape Analysis Works:
+
+    When you write a Go program, the compiler runs escape analysis to see if a variable "escapes" the function's scope. If the variable is referenced outside its scope (e.g., passed to another goroutine, returned from a function, or assigned to a global variable), it is allocated on the heap.
+    If the variable only exists within the function and doesn't escape its scope, it can be safely allocated on the stack, which is more efficient.
+    Performance Implications:
+
+    Stack allocation is generally faster because memory is automatically freed when the function returns.
+    Heap allocation requires more overhead, as the garbage collector must later manage and clean up memory.
+
+  - How memory management is done with goroutines?
+    In Go, memory management with goroutines is efficient due to dynamic stack allocation and garbage collection (GC). Goroutines start with a small stack (2 KB) that grows and shrinks as needed, allowing thousands of goroutines to run concurrently. Heap allocation is used for long-lived objects, and Go's concurrent GC handles cleanup without significant performance impacts.
+
+    For concurrency, Go uses channels and synchronization primitives to safely share memory between goroutines. Avoiding goroutine leaks, managing their lifecycles (e.g., using context for cancellation), and careful use of channels are crucial for efficient memory management.
+
+    Garbage collection can be tuned for better performance in high-concurrency environments.
+
+	- What is go service observerablity?
+	Observability in Go involves using metrics, logs, and tracing to monitor a service's health and performance in production. By applying these practices, teams can gain deep insights into the system's internal state, enabling faster troubleshooting and more efficient system maintenance.
+	Grafarna
+	Logging
+	Prometheus
+*/
+
+
 // defining constants
 const (
 	first = iota + 2
