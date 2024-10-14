@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-    // Create a context with a timeout of 2 seconds
+    // Create a context with a timeout of 2 seconds 
     ctx, cancel := context.WithTimeout(context.Background(), 2*time.Second)
     defer cancel() // Ensure that the context is canceled to release resources
 

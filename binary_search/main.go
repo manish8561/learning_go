@@ -24,10 +24,6 @@ func binarySearch(arr []int, target int) int {
 	return -1
 }
 
-func test() {
-	// arr := []int{2,2,2,2,2,2,2,0.5}
-}
-
 func main() {
 	arr := []int{1, 2, 3, 4, 5, 6, 8, 9}
 	r := binarySearch(arr, 6)
@@ -42,13 +38,13 @@ func main() {
 	q.Enqueue(13)
 	q.Enqueue(13)
 
-	fmt.Println("queue", q, q.IsEmpty())
+	fmt.Println("queue: ", q, q.IsEmpty())
 
 	v, err := q.Peek()
-	fmt.Println("queue peek", q, v, err)
+	fmt.Println("queue peek: ", q, v, err)
 
 	v, err = q.Dequeue()
-	fmt.Println("queue dequeue", q, v, err)
+	fmt.Println("queue dequeue: ", q, v, err)
 
 	//stack
 	s := stack.Stack{}
@@ -60,9 +56,9 @@ func main() {
 	s.Push(4)
 	s.Push(5)
 
-	fmt.Println("Stack ", s)
+	fmt.Println("Stack: ", s)
 	v, err = s.Pop()
-	fmt.Println("Stack POP ", v, err)
-	fmt.Println("Stack ", s)
+	fmt.Println("Stack POP: ", v, err)
+	fmt.Println("Stack: ", s)
 
 }

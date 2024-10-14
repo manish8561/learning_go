@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"time"
 )
-
+// another feature of context
 func enrichContext(ctx context.Context) context.Context {
 	return context.WithValue(ctx, "request-id", "123434")
 }

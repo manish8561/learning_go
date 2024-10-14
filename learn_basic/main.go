@@ -53,6 +53,7 @@ func addLine() {
 // we can also use package reflect.TypeOf or %T formatter in Printf function
 // interview question
 // type switch example in golang
+// also example of polymorphism
 func do(i interface{}) {
 	switch v := i.(type) {
 	case int:
@@ -137,7 +138,8 @@ func newExample() {
 		age  int
 	}
 
-	personPtr := new(Person)                                           // personPtr is of type *Person, pointing to a zeroed Person struct
+	personPtr := new(Person) // personPtr is of type *Person, pointing to a zeroed Person struct
+
 	fmt.Println("Person:", *personPtr, "Memory Address: ", &personPtr) // Output: {"" 0}
 
 	// Updating the struct through the pointer
