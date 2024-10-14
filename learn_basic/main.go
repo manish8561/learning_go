@@ -2,20 +2,19 @@ package main
 
 import "fmt"
 
-
 /**
  * Interview questions:
 
   - What is escape analysis in golang?
-    Escape analysis in Go is a compiler technique used to determine whether variables can be safely allocated on the stack or if they need to be moved to the heap. It helps improve memory management and performance by identifying where data lives during program execution.
+    Escape analysis in Go is a compiler technique used to determine whether variables can be safely allocated on the stack or if they need to be moved to the heap.
 
     Key points:
     Stack vs. Heap Allocation:
 
     Stack Allocation: Fast memory allocation that occurs within function calls and is automatically cleaned up when the function returns. If a variable’s lifetime ends within the function, it can be allocated on the stack.
     Heap Allocation: Slower memory allocation that allows variables to persist beyond the function call, requiring garbage collection for cleanup.
-    How Escape Analysis Works:
 
+    How Escape Analysis Works:
     When you write a Go program, the compiler runs escape analysis to see if a variable "escapes" the function's scope. If the variable is referenced outside its scope (e.g., passed to another goroutine, returned from a function, or assigned to a global variable), it is allocated on the heap.
     If the variable only exists within the function and doesn't escape its scope, it can be safely allocated on the stack, which is more efficient.
     Performance Implications:
@@ -37,7 +36,6 @@ import "fmt"
 	Prometheus
 */
 
-
 // defining constants
 const (
 	first = iota + 2
@@ -52,7 +50,7 @@ func addLine() {
 	fmt.Println("===================================================")
 }
 
-// we can also use package reflect.TypeOf or %T in Printf
+// we can also use package reflect.TypeOf or %T formatter in Printf function
 // interview question
 // type switch example in golang
 func do(i interface{}) {
