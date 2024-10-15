@@ -14,7 +14,7 @@ func main() {
 	for k, v := range map2 {
 		fmt.Println("K: ", k, "V: ", v)
 	}
-
+	// delete key from map
 	delete(map2, 114)
 
 	val, ok := map2[114]

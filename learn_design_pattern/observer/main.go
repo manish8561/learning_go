@@ -67,33 +67,31 @@ func (c *StockClient) Update(stockName string, price float64) {
 	fmt.Printf("Client %s received update: %s new price is %.2f\n", c.id, stockName, price)
 }
 
-func main(){
+func main() {
 	//Create a stock subject
 	appleStock := &Stock{name: "Apple"}
 
 	// Create stock clients (observers).
-	client1 := &StockClient{id:"Client1"}
-	client2 := &StockClient{id:"Client2"}
-	client3 := &StockClient{id:"Client3"}
+	client1 := &StockClient{id: "Client1"}
+	client2 := &StockClient{id: "Client2"}
+	client3 := &StockClient{id: "Client3"}
 
 	// Register clients to the stock
 	appleStock.RegisterObserver(client1)
 	appleStock.RegisterObserver(client2)
 	appleStock.RegisterObserver(client3)
 
-
-
 	//Simulate stock price changes and notify observers
-	go func(){
-		i:=0
+	go func() {
+		i := 0
 		rand.New(rand.NewSource(time.Now().UnixNano()))
 
 		for {
-			newPrice := 100 + rand.Float64() * 10// random price between 100 and 110
+			newPrice := 100 + rand.Float64()*10 // random price between 100 and 110
 			appleStock.SetPrice(newPrice)
-			time.Sleep(2*time.Second)
+			time.Sleep(2 * time.Second)
 			// removing one observer dynamically after few iteration
-			if i == 5{
+			if i == 5 {
 				appleStock.RemoveObserver(client3)
 			}
 			i++

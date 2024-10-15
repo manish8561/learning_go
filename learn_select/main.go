@@ -27,6 +27,8 @@ func main() {
 	// example 1
 	examples.ExamplFirst()
 
+	fmt.Println("----------------------------------------------")
+
 	// Creating channels
 	R1 := make(chan string)
 	R2 := make(chan string)

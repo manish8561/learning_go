@@ -28,7 +28,7 @@ func worker(id int, jobs <-chan Job, result chan<- bool) {
 func main() {
 	fmt.Println("Starts...")
 	tasks := 100
-	workers := 5
+	workers := 10 //5
 
 	jobs := make(chan Job, tasks)
 	results := make(chan bool)

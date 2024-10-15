@@ -25,25 +25,26 @@ func Example1() {
 	// Creating a channel that carries values of type 'Message'
 	messageChannel := make(chan Message)
 
-	// Example of sending a value through the channel
+	// go routine receving value from channel
 	go func() {
-		// Creating a Message instance
-		msg := Message{
-			Sender:    "Alice",
-			Content:   "Hello, Bob!",
-			Timestamp: 1620725555,
-		}
 		// Sending the message through the channel
-		messageChannel <- msg
-		close(messageChannel)
+		// Receiving the value from the channel and status of open and close of channel
+		receivedMsg, ok := <-messageChannel
+
+		// Printing the received message
+		fmt.Printf("Received message from %s: %s\n", receivedMsg.Sender, receivedMsg.Content)
+		fmt.Println("channel status: ", ok)
 	}()
-
-	// Receiving the value from the channel and status of open and close of channel
-	receivedMsg, ok := <-messageChannel
-
-	// Printing the received message
-	fmt.Printf("Received message from %s: %s\n", receivedMsg.Sender, receivedMsg.Content)
-	fmt.Println("channel status: ", ok)
+	
+	// Creating a Message instance
+	msg := Message{
+		Sender:    "Alice",
+		Content:   "Hello, Bob!",
+		Timestamp: 1620725555,
+	}
+	// Example of sending a value through the channel
+	messageChannel <- msg
+	close(messageChannel)
 
 }
 
@@ -106,6 +107,7 @@ func Example3() {
 	wg.Wait()
 	fmt.Println("ops:", ops.Load())
 }
+
 // interview question
 type Container struct {
 	mu       sync.Mutex
@@ -245,8 +247,9 @@ func initStrings(ch chan string) {
 	}
 	close(ch)
 }
+
 // interview question
-// buffered channels in golang
+// buffered channels in golang async in nature, unbuffered are sync in nature
 func Example7() {
 	defer DisplayLine()
 
@@ -287,6 +290,7 @@ func Example8() {
 	}
 	wg.Wait()
 }
+
 // interview question
 // same above function using channel synchronization to wait go routines
 func worker2(i int, check chan bool) {
@@ -333,7 +337,7 @@ func Example10() {
 	}
 }
 
-// example to explain select statements with channels
+// example to explain select statements with receiving value from multiple channels channels
 func functionOne(chanl1 chan string) {
 	time.Sleep(time.Second)
 	chanl1 <- "Welcome to the creative development world of the Golang"
@@ -344,7 +348,7 @@ func functionSecond(chanl2 chan int) {
 }
 func Example11() {
 	defer DisplayLine()
-	fmt.Println("Example 11 channels with select statements")
+	fmt.Println("Example 11 channels with select statements receiving values from multiple channels")
 	chanl1 := make(chan string)
 	chanl2 := make(chan int)
 

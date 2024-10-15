@@ -4,7 +4,7 @@ import "fmt"
 
 // interview question
 
-/* test for substring find in the string */
+/* test for substring find in the string with map*/
 func check(L, N string) bool {
 	M := make(map[int]int)
 	charCount := 0
@@ -32,7 +32,7 @@ func check(L, N string) bool {
 	return false
 }
 
-// function to get first index of substring from a string
+// function to get first index of substring from a string witout map
 func find(str string, target string) int {
 	for i := 0; i <= len(str)-len(target); i++ {
 		found := true

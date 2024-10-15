@@ -27,6 +27,7 @@ func main(){
 	p := Person{Name: "Manish Sharma", Age:38}
 
 	e := Employee{Person: &p, EmployeeId: 1}
+	// e := Employee{Person: &Person{Name: "Manish Sharma", Age:38}, EmployeeId: 1} // also valid
 
 	e.Intro()
 	// p.Intro()

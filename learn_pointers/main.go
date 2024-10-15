@@ -15,13 +15,14 @@ func main(){
 	fmt.Println("memory address of b: ", &b)
 	fmt.Println(c)
 
+	d := new(int)
+	fmt.Println("Pointer with new keyword: ", &d)
+
 }
 //generic after 1.18
 func ptrG[T any](v T) *T{
 	return &v
 }
-
-
 
 func ptr(v int) *int{
 	return &v

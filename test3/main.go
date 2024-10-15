@@ -7,7 +7,7 @@ import "fmt"
  * question to get counts of repeated elements from the array and also get the maximum value
  */
 func main() {
-	arr := []int{1, 2, 2, 2, 3, 3, 4, 4, 1, 2, 3}
+	arr := [...]int{1, 2, 2, 2, 3, 3, 4, 4, 1, 2, 3}
 
 	m := make(map[int]int)
 	max := 0

@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"sync"
 )
-
+// interview question m.Store(key, value) and m.Load(key) functions
 func Example() {
 	defer examples.DisplayLine()
 
