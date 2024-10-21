@@ -2,7 +2,6 @@ package examples
 
 import (
 	"fmt"
-	"math/rand"
 	"sync"
 	"sync/atomic"
 	"time"
@@ -35,7 +34,7 @@ func Example1() {
 		fmt.Printf("Received message from %s: %s\n", receivedMsg.Sender, receivedMsg.Content)
 		fmt.Println("channel status: ", ok)
 	}()
-	
+
 	// Creating a Message instance
 	msg := Message{
 		Sender:    "Alice",
@@ -148,78 +147,20 @@ func Example4() {
 	fmt.Println(c.counters)
 }
 
-// example of atomic without mutex and stateful go routines
+// basic example
+func multiplyWithChannel(ch chan int) {
+	fmt.Println(100 * <-ch)
+}
+
 func Example5() {
 	defer DisplayLine()
+	fmt.Println("Example 5 basic channel")
 
-	fmt.Println("Example 5 with stateful go routine")
-	type readOp struct {
-		key  int
-		resp chan int
-	}
-	type writeOp struct {
-		key  int
-		val  int
-		resp chan bool
-	}
-
-	var readOps uint64
-	var writeOps uint64
-
-	reads := make(chan readOp)
-	writes := make(chan writeOp)
-
-	go func() {
-		var state = make(map[int]int)
-		for {
-			select {
-			case read := <-reads:
-				read.resp <- state[read.key]
-			case write := <-writes:
-				state[write.key] = write.val
-				write.resp <- true
-			}
-		}
-	}()
-
-	for r := 0; r < 100; r++ {
-		go func() {
-			for {
-				read := readOp{
-					key:  rand.Intn(5),
-					resp: make(chan int),
-				}
-				reads <- read
-				<-read.resp
-				atomic.AddUint64(&readOps, 1)
-				time.Sleep(time.Millisecond)
-			}
-		}()
-	}
-
-	for w := 0; w < 10; w++ {
-		go func() {
-			for {
-				write := writeOp{
-					key:  rand.Intn(5),
-					val:  rand.Intn(100),
-					resp: make(chan bool),
-				}
-				writes <- write
-				<-write.resp
-				atomic.AddUint64(&writeOps, 1)
-				time.Sleep(time.Millisecond)
-			}
-		}()
-	}
-
-	time.Sleep(time.Second)
-
-	readOpsFinal := atomic.LoadUint64(&readOps)
-	fmt.Println("readOps:", readOpsFinal)
-	writeOpsFinal := atomic.LoadUint64(&writeOps)
-	fmt.Println("writeOps:", writeOpsFinal)
-
+	ch := make(chan int)
+	fmt.Println("Hello from example 12")
+	go multiplyWithChannel(ch)
+	ch <- 10
+	fmt.Println("Bye from example 12")
 }
 
 // loops with channels for receiving and check channel is closed or not
@@ -361,20 +302,4 @@ func Example11() {
 	case val2 := <-chanl2:
 		fmt.Println(val2)
 	}
-}
-
-// basic example
-func multiplyWithChannel(ch chan int) {
-	fmt.Println(100 * <-ch)
-}
-
-func Example12() {
-	defer DisplayLine()
-	fmt.Println("Example 12 basic channel")
-
-	ch := make(chan int)
-	fmt.Println("Hello from example 12")
-	go multiplyWithChannel(ch)
-	ch <- 10
-	fmt.Println("Bye from example 12")
 }

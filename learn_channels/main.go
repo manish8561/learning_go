@@ -2,6 +2,7 @@ package main
 
 import (
 	"demo/examples"
+	"demo/fifth"
 	"demo/fourth"
 	"demo/second"
 	"demo/third"
@@ -48,10 +49,9 @@ func main() {
 	// memory management example
 	third.Example1()
 
-	// basic example
-	examples.Example12()
-
 	// sync map example
 	fourth.Example()
 
+	// basic example
+	fifth.Example12()
 }
