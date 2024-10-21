@@ -19,7 +19,6 @@ func Example1() int {
 	count := -1
 	for i := 0; i < len(arr)-1; {
 		count++
-		fmt.Println(arr[i], " >= ", arr[i+1])
 		if arr[i] >= arr[i+1] {
 			return count
 		}

@@ -34,6 +34,7 @@ func main() {
 	}
 	fmt.Println()
 
+	fmt.Println("-----------------------------------------")
 	// car circular road return first pair to be completed
 	r := examples.Example1()
 	fmt.Println("result: ", r)
