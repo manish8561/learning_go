@@ -109,4 +109,5 @@ func sliceExamples() {
 	// testing condition for error
 	arr4 := []int{}
 	fmt.Println(arr4, "condition: ", arr4 == nil, "empty array: ", len(arr4) == 0)
+
 }
