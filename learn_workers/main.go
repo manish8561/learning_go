@@ -13,15 +13,17 @@ import (
 
 type Job struct {
 	id int
+	completed bool
 }
 
-func worker(id int, jobs <-chan Job, result chan<- bool) {
+func worker(id int, jobs <-chan Job, result chan<- Job) {
 	for j := range jobs {
 		fmt.Println("worker: ", id, "started job: ", j.id)
 		time.Sleep(time.Duration(rand.Intn(1000)) * time.Millisecond)
 		fmt.Println("worker: ", id, "finished job: ", j.id)
 
-		result <- true
+		j.completed = true
+		result  <- j
 	}
 }
 
@@ -30,8 +32,8 @@ func main() {
 	tasks := 100
 	workers := 10 //5
 
-	jobs := make(chan Job, tasks)
-	results := make(chan bool)
+	jobs := make(chan Job, tasks) // buffered channel for tasks
+	results := make(chan Job)
 
 	for i := 1; i <= workers; i++ {
 		go worker(i, jobs, results)
@@ -45,7 +47,7 @@ func main() {
 	completed := 0
 	for r := 1; r <= tasks; r++ {
 		res := <-results
-		if res {
+		if res.completed {
 			completed++
 		}
 	}
