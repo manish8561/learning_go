@@ -84,6 +84,24 @@ func do(i interface{}) {
 }
 
 func main() {
+
+	// hackerrank question to count digit as divisor for specific number
+	// e.g. 123 like 1 & 3 is divisor for this number
+	count := 0
+	num := 123456789
+	temp := num
+	for temp > 0 {
+		d := temp % 10
+		fmt.Println(num, " % ", d, num%d == 0)
+		if d != 0 && num%d == 0 {
+			count++
+		}
+		temp = temp / 10
+		fmt.Println(temp)
+	}
+
+	fmt.Println(count)
+
 	mmap := map[string]string{"0": "a", "1": "b", "2": "c"}
 
 	for key, value := range mmap {
