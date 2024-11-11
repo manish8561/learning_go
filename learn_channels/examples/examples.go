@@ -47,7 +47,7 @@ func Example1() {
 
 }
 
-// channels with select statements and timeout in select
+// channels with select statements and timeout in select with buffered channels
 func Example2() {
 	defer DisplayLine()
 
@@ -201,7 +201,7 @@ func Example7() {
 	ch <- 1
 	ch <- 2
 	ch <- 3
-	// ch <- 4 // it will waited for extra sending
+	// ch <- 4 // it will waited for extra sending and giving deadlock
 	close(ch)
 	for d := range ch {
 		fmt.Println("r: ", d)
@@ -296,6 +296,7 @@ func Example11() {
 	go functionSecond(chanl2)
 	go functionOne(chanl1)
 
+	//select with multiple channels values
 	select {
 	case val1 := <-chanl1:
 		fmt.Println(val1)

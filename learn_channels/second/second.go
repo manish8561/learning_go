@@ -16,8 +16,9 @@ func Example1() {
 
 	var counter int32
 	var wg sync.WaitGroup
-	start := time.Now()
 	var mu sync.Mutex
+	
+	start := time.Now()
 
 	for i := 0; i < 10000000; i++ {
 		wg.Add(1)

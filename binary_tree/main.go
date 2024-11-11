@@ -11,38 +11,38 @@ type TreeNode struct {
 }
 
 // Insert adds a new node to the binary tree
-func (n *TreeNode) Insert(value int) {
-    if value <= n.Value {
+func (n *TreeNode) Insert(v int) {
+    if v <= n.Value {
         if n.Left == nil {
-            n.Left = &TreeNode{Value: value}
+            n.Left = &TreeNode{Value: v}
         } else {
-            n.Left.Insert(value)
+            n.Left.Insert(v)
         }
     } else {
         if n.Right == nil {
-            n.Right = &TreeNode{Value: value}
+            n.Right = &TreeNode{Value: v}
         } else {
-            n.Right.Insert(value)
+            n.Right.Insert(v)
         }
     }
 }
 
 // Search looks for a value in the binary tree
-func (n *TreeNode) Search(value int) bool {
+func (n *TreeNode) Search(v int) bool {
     if n == nil {
         return false
     }
 
-    if n.Value == value {
+    if n.Value == v {
         return true
-    } else if value < n.Value {
-        return n.Left.Search(value)
+    } else if v < n.Value {
+        return n.Left.Search(v)
     } else {
-        return n.Right.Search(value)
+        return n.Right.Search(v)
     }
 }
 
-// InOrderTraversal prints the tree in sorted order
+// InOrderTraversal prints the tree in sorted ascending order
 func (n *TreeNode) InOrderTraversal() {
     if n == nil {
         return

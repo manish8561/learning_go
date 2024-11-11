@@ -30,12 +30,14 @@ func (td ToyDuck) Squeak() string {
 
 // BirdAdapter adapts a Bird to be used as a Toy.
 type BirdAdapter struct {
-	Bird Bird
+	// Bird Bird //can also written in this way
+	Bird //embedding struct inheritance way of oops
 }
 
 // Squeak implements the Toy interface, adapting the bird's sound.
 func (ba BirdAdapter) Squeak() string {
-	return ba.Bird.MakeSound() // Adapting the bird's sound as the toy's squeak
+	// return ba.Bird.MakeSound() // Adapting the bird's sound as the toy's squeak
+	return ba.MakeSound() // another way around
 }
 
 func main() {

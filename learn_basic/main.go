@@ -5,7 +5,7 @@ import "fmt"
 /**
  * Interview questions:
   - What is escape analysis in golang?
-    Escape analysis in Go is a compiler technique used to determine whether variables can be safely allocated on the stack or if they need to be moved to the heap.
+    Escape analysis in Go is a compiler technique used to determine whether variables can be safely allocated on the stack or to the heap.
 
     Key points:
     Stack vs. Heap Allocation:
@@ -16,10 +16,6 @@ import "fmt"
     How Escape Analysis Works:
     When you write a Go program, the compiler runs escape analysis to see if a variable "escapes" the function's scope. If the variable is referenced outside its scope (e.g., passed to another goroutine, returned from a function, or assigned to a global variable), it is allocated on the heap.
     If the variable only exists within the function and doesn't escape its scope, it can be safely allocated on the stack, which is more efficient.
-    Performance Implications:
-
-    Stack allocation is generally faster because memory is automatically freed when the function returns.
-    Heap allocation requires more overhead, as the garbage collector must later manage and clean up memory.
 
   - How memory management is done with goroutines?
     In Go, memory management with goroutines is efficient due to dynamic stack allocation and garbage collection (GC). Goroutines start with a small stack (2 KB) that grows and shrinks as needed, allowing thousands of goroutines to run concurrently. Heap allocation is used for long-lived objects, and Go's concurrent GC handles cleanup without significant performance impacts.
@@ -30,9 +26,11 @@ import "fmt"
 
 	- What is go service observerablity?
 	Observability in Go involves using metrics, logs, and tracing to monitor a service's health and performance in production. By applying these practices, teams can gain deep insights into the system's internal state, enabling faster troubleshooting and more efficient system maintenance.
+	e.g.
 	Grafarna
 	Logging
 	Prometheus
+	Datadog
 */
 
 /*
@@ -85,6 +83,9 @@ func do(i interface{}) {
 
 func main() {
 
+	fmt.Println("const values", first, second, third, fourth, fivth, sixth)
+	addLine()
+
 	// hackerrank question to count digit as divisor for specific number
 	// e.g. 123 like 1 & 3 is divisor for this number
 	count := 0
@@ -92,23 +93,21 @@ func main() {
 	temp := num
 	for temp > 0 {
 		d := temp % 10
-		fmt.Println(num, " % ", d, num%d == 0)
+		// fmt.Println(num, " % ", d, num%d == 0)
 		if d != 0 && num%d == 0 {
 			count++
 		}
 		temp = temp / 10
-		fmt.Println(temp)
 	}
 
 	fmt.Println(count)
 
+	// map
 	mmap := map[string]string{"0": "a", "1": "b", "2": "c"}
 
 	for key, value := range mmap {
 		fmt.Println("Key: ", key, "Value: ", value)
 	}
-
-	fmt.Println("const values", first, second, third, fourth, fivth, sixth)
 
 	addLine()
 
@@ -156,7 +155,7 @@ func newExample() {
 	// Using new() to allocate memory for an int
 	numPtr := new(int) // numPtr is of type *int, pointing to a zero value (0)
 
-	fmt.Println("Value of numPtr:", *numPtr) // Dereferencing to get the value (initially 0)
+	fmt.Println("Value of numPtr:", *numPtr, &numPtr) // Dereferencing to get the value (initially 0)
 
 	// Updating the value through the pointer
 	*numPtr = 42

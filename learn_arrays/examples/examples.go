@@ -8,7 +8,7 @@ func removeElement(slice []int, element int) []int {
 	for i, v := range slice {
 		if v == element {
 			// Remove the element by appending the slices before and after the index
-			return append(slice[:i], slice[i+1:]...)
+			return append(slice[:i], slice[i+1:]...) // this way can also used to merge array
 		}
 	}
 	return slice // Return the original slice if the element was not found

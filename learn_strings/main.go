@@ -51,7 +51,8 @@ func main() {
 	fmt.Println(x) // => 7
 	fmt.Println(y) // => 10
 
-	// variadic functions works like functions overloading
+	// variadic functions works like functions overloading wiht multiple numbers of 
+	// arguments of same type
 	fmt.Println("------------------------------")
 	fmt.Println("variadic functions")
 
@@ -75,6 +76,9 @@ func main() {
 
 	// example to learn steps required to convert to pailedrome string
 	s := "abcbb"
+	fmt.Println("Paildrome: ", checkPailedromeString(s))
+	fmt.Println("------------------------------")
+
 	r := convertToPailedromeString(s)
 	fmt.Println("result count", r)
 
@@ -108,5 +112,14 @@ func convertToPailedromeString(s string) int {
 	}
 
 	return int(cnt)
+}
 
+// example to check pailedrome string with 2 pointer approach
+func checkPailedromeString(s string) bool {
+	for i := 0; i < len(s)/2; i++ {
+		if s[i] != s[len(s)-1-i] {
+			return false
+		}
+	}
+	return true
 }

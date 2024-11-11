@@ -45,9 +45,10 @@ func Example1() {
 		// go routines
 		go func() {
 			defer wg.Done()
-			obj := objectPool.Get().(*SomeObject)
 			// some use of the objes to do stuff
 			// obj := createObject()
+			obj := objectPool.Get().(*SomeObject)
+			
 			// objects = append(objects, obj)
 			objectPool.Put(obj)
 		}()

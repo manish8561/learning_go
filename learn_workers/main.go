@@ -12,7 +12,7 @@ import (
 // 3 workers 100 tasks with struct and print completed tasks
 
 type Job struct {
-	id int
+	id        int
 	completed bool
 }
 
@@ -23,17 +23,18 @@ func worker(id int, jobs <-chan Job, result chan<- Job) {
 		fmt.Println("worker: ", id, "finished job: ", j.id)
 
 		j.completed = true
-		result  <- j
+		result <- j
 	}
 }
 
 func main() {
+	start := time.Now()
 	fmt.Println("Starts...")
 	tasks := 100
 	workers := 10 //5
 
 	jobs := make(chan Job, tasks) // buffered channel for tasks
-	results := make(chan Job)
+	results := make(chan Job, tasks)
 
 	for i := 1; i <= workers; i++ {
 		go worker(i, jobs, results)
@@ -53,4 +54,7 @@ func main() {
 	}
 	fmt.Println("Completed Tasks: ", completed)
 	fmt.Println("Ends...")
+	end := time.Since(start)
+	fmt.Println("Time Taken: ", end)
+
 }
