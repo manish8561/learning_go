@@ -74,7 +74,7 @@ Intermediate Level Questions & Answers:
 A:
 ```go
 // new():
-- Allocates memory but doesn't initialize it
+- Allocates memory but does not initialize it
 - Returns a pointer to zeroed memory
 - Used for value types
 
