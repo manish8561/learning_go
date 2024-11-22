@@ -51,7 +51,7 @@ func main() {
 	fmt.Println(x) // => 7
 	fmt.Println(y) // => 10
 
-	// variadic functions works like functions overloading wiht multiple numbers of 
+	// variadic functions works like functions overloading wiht multiple numbers of
 	// arguments of same type
 	fmt.Println("------------------------------")
 	fmt.Println("variadic functions")
@@ -84,6 +84,13 @@ func main() {
 
 	// array example in string
 	examples.Example2()
+
+	fmt.Println("------------------------------")
+	// reverse the string
+	// interview question
+	ss := "Manish Sharma"
+	ss = reverseString(ss)
+	fmt.Println("Result: ", ss)
 
 }
 
@@ -122,4 +129,13 @@ func checkPailedromeString(s string) bool {
 		}
 	}
 	return true
+}
+
+// reverse the string with 2 pointers approach
+func reverseString(s string) string {
+	runes := []rune(s)
+	for i, j := 0, len(s)-1; i < j; i, j = i+1, j-1 {
+		runes[i], runes[j] = runes[j], runes[i]
+	}
+	return string(runes)
 }
