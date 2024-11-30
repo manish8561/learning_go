@@ -42,14 +42,16 @@ func (suite *GameTestSuite) TestHadAGoodGame() {
 		goodGame bool
 		wantErr  string
 	}{
-		{"bad game: error testing", Stats{
-			Name:      "player 1",
-			Minutes:   34.1,
-			Points:    -1,
-			Assits:    10,
-			TrunOvers: -10,
-			Rebounds:  -14,
-		}, false, "player stats can't be negative"}, {
+		{
+			"bad game: error testing", Stats{
+				Name:      "player 1",
+				Minutes:   34.1,
+				Points:    -1,
+				Assits:    10,
+				TrunOvers: -10,
+				Rebounds:  -14,
+			}, false, "player stats can't be negative"},
+		{
 			"good game", Stats{
 				Name:      "player 1",
 				Minutes:   34.1,
