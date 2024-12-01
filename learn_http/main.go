@@ -52,8 +52,8 @@ func handlePutRequest(w http.ResponseWriter, r *http.Request) {
 func main() {
 	http.HandleFunc("/user", handlePutRequest)
 
-	fmt.Println("Server running on http://localhost:8080")
-	if err := http.ListenAndServe(":8080", nil); err != nil {
+	fmt.Println("Server running on http://localhost:8081")
+	if err := http.ListenAndServe(":8081", nil); err != nil {
 		fmt.Println("Failed to start server:", err)
 	}
 }
