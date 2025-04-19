@@ -92,6 +92,9 @@ func main() {
 	ss = reverseString(ss)
 	fmt.Println("Result: ", ss)
 
+	sss := reverse(ss)
+	fmt.Println("reverse again: ", sss)
+
 }
 
 func split(sum int) (x, y int) {
@@ -138,4 +141,13 @@ func reverseString(s string) string {
 		runes[i], runes[j] = runes[j], runes[i]
 	}
 	return string(runes)
+}
+
+// reverse the string without runes
+func reverse(s string) string {
+	r := ""
+	for i := len(s) - 1; i >= 0; i-- {
+		r += string(s[i])
+	}
+	return r
 }
