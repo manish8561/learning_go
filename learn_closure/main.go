@@ -12,6 +12,15 @@ func adder() func(int) int {
 	}
 }
 
+// Fibonacci as normal recursive function
+func fibonacciNor(n int) int {
+	if n <= 1 {
+		return n
+	}
+
+	return fibonacciNor(n-1) + fibonacciNor(n-2)
+}
+
 // Fibonacci function with memoization using a closure
 func fibonacci() func(int) int {
 	cache := map[int]int{}
@@ -42,5 +51,8 @@ func main() {
 	fmt.Println("---------------------------------------")
 	fib := fibonacci()
 	fmt.Println(fib(10)) // Output: 55
-	fmt.Println(fib(20))  // Output: 6765
+	fmt.Println(fib(20)) // Output: 6765
+
+	// nth value from fibonacci
+	fmt.Println(fibonacciNor(8))
 }

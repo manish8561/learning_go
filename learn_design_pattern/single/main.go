@@ -61,7 +61,7 @@ func main() {
 	examples.Example1()
 
 	
-	for i := 0; i < 30; i++ {
+	for range 30 {
 		go getSingleTonInstance()
 	}
 	fmt.Scanln()

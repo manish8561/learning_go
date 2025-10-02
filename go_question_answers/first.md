@@ -97,6 +97,7 @@ A:
 - Delays execution until surrounding function returns
 - Executed in LIFO order
 - Commonly used for cleanup operations
+- Runs even error occurs
 
 func processFile() error {
     f, err := os.Open("file.txt")

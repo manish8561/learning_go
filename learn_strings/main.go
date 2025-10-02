@@ -51,7 +51,7 @@ func main() {
 	fmt.Println(x) // => 7
 	fmt.Println(y) // => 10
 
-	// variadic functions works like functions overloading wiht multiple numbers of
+	// variadic functions works like functions overloading with multiple numbers of
 	// arguments of same type
 	fmt.Println("------------------------------")
 	fmt.Println("variadic functions")
