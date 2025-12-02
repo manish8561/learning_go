@@ -12,7 +12,7 @@ const (
 	sixth
 )
 
-func addLine() {
+func Addline() {
 	fmt.Println("===================================================")
 }
 
@@ -33,26 +33,35 @@ func do(i interface{}) {
 	}
 }
 
-func main() {
-
-	fmt.Println("const values", first, second, third, fourth, fivth, sixth)
-	addLine()
-
+func countDigitsAsDivisor() {
 	// hackerrank question to count digit as divisor for specific number
-	// e.g. 123 like 1 & 3 is divisor for this number
+	// e.g. 123 like 1 & 3 is divisor for this number is 2
 	count := 0
-	num := 123456789
+	num := 123322432431
 	temp := num
+	arr := []int{}
 	for temp > 0 {
 		d := temp % 10
 		// fmt.Println(num, " % ", d, num%d == 0)
 		if d != 0 && num%d == 0 {
+			arr = append(arr, d)
 			count++
 		}
 		temp = temp / 10
 	}
+	fmt.Println("The number is: ", num)
+	fmt.Println("The digits are: ", arr)
+	fmt.Println("The count of the divisor is: ", count)
+	Addline()
+}
 
-	fmt.Println(count)
+func main() {
+
+	fmt.Println("const values", first, second, third, fourth, fivth, sixth)
+	Addline()
+
+	// hacker rank example
+	countDigitsAsDivisor()
 
 	// map
 	mmap := map[string]string{"0": "a", "1": "b", "2": "c"}
@@ -61,9 +70,9 @@ func main() {
 		fmt.Println("Key: ", key, "Value: ", value)
 	}
 
-	addLine()
+	Addline()
 
-	arr := [...]int{3, 5, 6, 4, 8, 7, 9, 1}
+	arr := [...]int{3, 5, 6, 4, 8, 7, 9, 7, 1}
 
 	// bubble sort desecending order
 	for i := 0; i < len(arr); i++ {
@@ -73,7 +82,7 @@ func main() {
 			}
 		}
 	}
-	fmt.Println(arr)
+	fmt.Println("bubble sort: ", arr)
 
 	// insertion sort in ascending order
 	for i := 0; i < len(arr); i++ {
@@ -83,15 +92,15 @@ func main() {
 			}
 		}
 	}
-	fmt.Println(arr)
-	addLine()
+	fmt.Println("insertion sort: ", arr)
+	Addline()
 
 	// example to test types with switch
 	do(21)
 	do(3.14)
 	do("hello")
 	do(true)
-	addLine()
+	Addline()
 
 	// new keyword example in golang
 	newExample()
