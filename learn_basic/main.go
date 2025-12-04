@@ -13,7 +13,7 @@ const (
 )
 
 func Addline() {
-	fmt.Println("===================================================")
+	fmt.Println("+++++++++++++++++++++++++++++++++++++++++++++++++")
 }
 
 // we can also use package reflect.TypeOf or %T formatter in Printf function
@@ -93,6 +93,12 @@ func main() {
 		}
 	}
 	fmt.Println("insertion sort: ", arr)
+	Addline()
+
+	// example of array with range
+	for i := range len(arr) {
+		fmt.Println("Index: ", i, "Value: ", arr[i])
+	}
 	Addline()
 
 	// example to test types with switch

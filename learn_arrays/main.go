@@ -30,10 +30,10 @@ func main() {
 	}
 
 	// Multidimensional array
-	var matrix [3][3]int
-	matrix[0][0] = 1
-	matrix[1][1] = 2
-	matrix[2][2] = 3
+	var matrix = [3][3]int{{1}, {0, 4}, {0, 0, 9}}
+	// matrix[0][0] = 1
+	// matrix[1][1] = 2
+	// matrix[2][2] = 3
 	fmt.Println("Matrix:", matrix)
 
 	// Pass array to a function
