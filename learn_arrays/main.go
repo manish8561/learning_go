@@ -71,7 +71,7 @@ func sliceExamples() {
 
 	myslice := arr[1:6]
 
-	// print slices
+	// print slices from the array
 	fmt.Println(myslice, len(myslice), cap(myslice))
 
 	myslice = append(myslice, "testing")
@@ -81,7 +81,7 @@ func sliceExamples() {
 
 	myslice = append(myslice, "testing")
 
-	// print slices
+	// print slices with double capacity and length increased by 1
 	fmt.Println(myslice, len(myslice), cap(myslice))
 
 	// loop over slices

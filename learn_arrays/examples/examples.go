@@ -3,7 +3,7 @@ package examples
 import (
 	"fmt"
 )
-
+// Function to remove an element from a slice
 func removeElement(slice []int, element int) []int {
 	for i, v := range slice {
 		if v == element {
@@ -15,7 +15,7 @@ func removeElement(slice []int, element int) []int {
 }
 
 func Example1() {
-	numbers := []int{10, 20, 30, 40, 50}
+	numbers := []int{10, 20, 30, 40, 50, 60}
 	fmt.Println("Original slice:", numbers) // Output: [10 20 30 40 50]
 
 	// Remove the element with the value 50
