@@ -3,11 +3,15 @@ package main
 import "fmt"
 
 // testing for benchmarking with test file check the main_test.go file
-func SquareValue(v int) int{
-	return v*v
+func SquareValue(v int) int {
+	return v * v
 }
 
-func main(){
+func PrintValue(v any) {
+	fmt.Println("Value is: ", v)
+}
+
+func main() {
 	res := SquareValue(2)
-	fmt.Println("Result: ", res)
+	PrintValue(res)
 }

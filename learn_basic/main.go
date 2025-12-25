@@ -56,8 +56,10 @@ func countDigitsAsDivisor() {
 }
 
 func main() {
+	fmt.Println("Hello Go Lang!!!")
+	fmt.Printf("\a") // alert sound
 
-	fmt.Println("const values", first, second, third, fourth, fivth, sixth)
+	fmt.Println("constant values", first, second, third, fourth, fivth, sixth)
 	Addline()
 
 	// hacker rank example
