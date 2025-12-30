@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
 // interview question
 // closure function returning function and return value
@@ -13,18 +16,19 @@ func adder() func(int) int {
 }
 
 // Fibonacci as normal recursive function
-func fibonacciNor(n int) int {
+func fibonacciNormal(n int) int {
 	if n <= 1 {
 		return n
 	}
 
-	return fibonacciNor(n-1) + fibonacciNor(n-2)
+	return fibonacciNormal(n-1) + fibonacciNormal(n-2)
 }
 
 // Fibonacci function with memoization using a closure
 func fibonacci() func(int) int {
 	cache := map[int]int{}
-	var fib func(n int) int
+
+	var fib func(n int) int // Declare the function variable for recursion
 	fib = func(n int) int {
 		if n <= 1 {
 			return n
@@ -50,9 +54,22 @@ func main() {
 
 	fmt.Println("---------------------------------------")
 	fib := fibonacci()
-	fmt.Println(fib(10)) // Output: 55
-	fmt.Println(fib(20)) // Output: 6765
+	//compare normal fibonacci and closure fibonacci with memoization
+	tNow := time.Now()
 
-	// nth value from fibonacci
-	fmt.Println(fibonacciNor(8))
+	n := 50
+
+	for i := range n {
+		fmt.Printf("fibonacci Normal(%d) = %d\n", i, fibonacciNormal(i))
+
+	}
+	fmt.Println(time.Since(tNow).Microseconds())
+
+	fmt.Println("---------------------------------------")
+	//closure fibonacci with memoization
+	tNow = time.Now()
+	for i := range n {
+		fmt.Printf("fibonacci with cache(%d) = %d\n", i, fib(i))
+	}
+	fmt.Println(time.Since(tNow).Microseconds())
 }
