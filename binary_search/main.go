@@ -6,7 +6,10 @@ import (
 	"example.com/demo/queue"
 	"example.com/demo/stack"
 )
+
 // interview question
+// time complexity O(log n) always
+// space complexity O(1)
 func binarySearch(arr []int, target int) int {
 	left, right := 0, len(arr)-1
 

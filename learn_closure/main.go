@@ -25,6 +25,7 @@ func fibonacciNormal(n int) int {
 }
 
 // Fibonacci function with memoization using a closure
+// Dynamic programming technique
 func fibonacci() func(int) int {
 	cache := map[int]int{}
 
