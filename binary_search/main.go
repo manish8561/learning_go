@@ -32,8 +32,12 @@ func main() {
 	r := binarySearch(arr, 6)
 	fmt.Println("binary search", r)
 
-	//queueu
+	fmt.Println("-------------------------------------------------------")
+
+	//queue
 	q := queue.Queue{}
+	fmt.Println("queue: ", q, "empty: ", q.IsEmpty())
+
 	q.Enqueue(1)
 	q.Enqueue(1)
 	q.Enqueue(12)
@@ -41,13 +45,15 @@ func main() {
 	q.Enqueue(13)
 	q.Enqueue(13)
 
-	fmt.Println("queue: ", q, q.IsEmpty())
+	fmt.Println("queue: ", q, "empty: ", q.IsEmpty())
 
 	v, err := q.Peek()
-	fmt.Println("queue peek: ", q, v, err)
+	fmt.Println("queue peek: ", q, "value: ", v, "err: ", err)
 
 	v, err = q.Dequeue()
-	fmt.Println("queue dequeue: ", q, v, err)
+	fmt.Println("queue dequeue: ", q, "value: ", v, "err: ", err)
+
+	fmt.Println("-------------------------------------------------------")
 
 	//stack
 	s := stack.Stack{}

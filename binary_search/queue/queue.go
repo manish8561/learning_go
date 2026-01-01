@@ -5,14 +5,14 @@ import (
 )
 
 // interview question
+// queue implementation using slice and interface
+type QueueInterface interface {
+	Enqueue(int)
+	Dequeue() (int, error)
+	Peek() (int, error)
+	IsEmpty() bool
+}
 
-//	type QueueInterface interface {
-//		Enqueue(int)
-//		Dequeue() (int, error)
-//		Peek() (int, error)
-//		IsEmpty() bool
-//	}
-//
 // FIFO
 type Queue struct {
 	items []int
