@@ -90,17 +90,21 @@ func sliceExamples() {
 	for index, value := range arr2 {
 		fmt.Println("Index: ", index, "Value: ", value)
 	}
+	fmt.Println("---------------------------------------------")
 
 	arr3 := [...]int{1, 2, 3, 4, 5, 6, 7}
 	slc := arr3[:4]
 
-	fmt.Println("arr", arr3, "slc", slc)
+	fmt.Println("arr", arr3)
+	printSlice(slc)
+
 	// values reassign will change value in array also since slices are reference types
 	slc[0] = 10
 	slc[1] = 20
 	slc[2] = 100
 
-	fmt.Println("arr", arr3, "slc", slc)
+	fmt.Println("arr", arr3)
+	printSlice(slc)
 
 	// Another example
 	fmt.Println("---------------------------------------------")
@@ -109,5 +113,53 @@ func sliceExamples() {
 	// testing condition for error
 	arr4 := []int{}
 	fmt.Println(arr4, "condition: ", arr4 == nil, "empty array: ", len(arr4) == 0)
+	fmt.Println("---------------------------------------------")
 
+	// slice operations
+	/* declare main function */
+	fmt.Println("Slice Operations")
+
+	/* create a slice */
+	numbers := []int{0, 1, 2, 3, 4, 5, 6, 7, 8}
+	printSlice(numbers)
+
+	/* print the original slice */
+	fmt.Println("numbers ==", numbers)
+
+	/* print the sub slice starting from index 1(included) to index 4(excluded)*/
+	fmt.Println("numbers[1:4] ==", numbers[1:4])
+
+	/* missing lower bound implies 0*/
+	fmt.Println("numbers[:3] ==", numbers[:3])
+
+	/* missing upper bound implies len(s)*/
+	fmt.Println("numbers[4:] ==", numbers[4:])
+
+	numbers1 := make([]int, 0, 5)
+	printSlice(numbers1)
+
+	/* print the sub slice starting from index 0(included) to index 2(excluded) */
+	number2 := numbers[:2]
+	printSlice(number2)
+
+	/* print the sub slice starting from index 2(included) to index 5(excluded) */
+	number3 := numbers[2:5]
+	printSlice(number3)
+
+	fmt.Println("---------------------------------------------")
+	// Jagged arrays (slices of slices)
+	jagged := [][]int{
+		{4, 5},
+		{6, 7, 8},
+		{9},
+	}
+	fmt.Printf("Jagged array: %v", jagged)
+	fmt.Println()
+	for i, innerSlice := range jagged {
+		fmt.Printf("Slice %d: %v (Length: %d)\n", i, innerSlice, len(innerSlice))
+	}
+
+}
+func printSlice(x []int) {
+	fmt.Printf("len = %d cap = %d slice = %v\n", len(x), cap(x), x)
 }
