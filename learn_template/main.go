@@ -7,15 +7,17 @@ import (
 )
 
 type Student struct {
-	Name  string
-	Marks int
-	Id    string
+	Name   string
+	Marks  int
+	Id     string
+	Active bool
 }
 
 func main() {
-	std1 := Student{"Manish Sharma", 95, "1"}
+	std1 := Student{"Manish Sharma", 95, "1", true}
 
-	// tex templating
+	fmt.Println("text/template example: ")
+	// text templating
 	tmp1 := template.New("test_1")
 
 	tmp1, _ = tmp1.Parse("Hello {{.Name}}, your marks are {{.Marks}}%!\n")

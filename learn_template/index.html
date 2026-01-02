@@ -7,7 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
   <body>
+    {{if .Active}}
     <h1>Hello, {{.Name}}, ID number: {{.Id}}</h1>
     <p>Your scores : {{.Marks}}%</p>
+    {{else}}
+    <h1>Hello, {{.Name}}</h1>
+    <p>Your account is inactive. Please contact support.</p>
+    {{end}}
   </body>
 </html>
