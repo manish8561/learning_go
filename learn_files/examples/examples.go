@@ -7,15 +7,17 @@ import (
 	"os"
 	"sync"
 )
+
 // interview question
 
 func Reading(dataCh chan<- string, wg *sync.WaitGroup) {
 	defer wg.Done()
-	file, err := os.Open("sample.txt")
 
+	file, err := os.Open("sample.txt")
 	if err != nil {
 		log.Fatal(err)
 	}
+	defer file.Close()
 
 	Scanner := bufio.NewScanner(file)
 
@@ -26,7 +28,6 @@ func Reading(dataCh chan<- string, wg *sync.WaitGroup) {
 		dataCh <- line
 	}
 	close(dataCh)
-	file.Close()
 
 	if err := Scanner.Err(); err != nil {
 		log.Fatal(err)
@@ -35,22 +36,21 @@ func Reading(dataCh chan<- string, wg *sync.WaitGroup) {
 
 func Writing(dataCh <-chan string, wg *sync.WaitGroup) {
 	defer wg.Done()
-	file, err := os.OpenFile("write.txt", os.O_APPEND|os.O_WRONLY, os.ModeAppend)
+
+	// Write the modified data back to the file
+	file, err := os.OpenFile("write.txt", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
 	if err != nil {
-		log.Fatal(err)
+		fmt.Println("Error opening file:", err)
+		return
 	}
 	defer file.Close()
 
-	writer := bufio.NewWriter(file)
 	for ch := range dataCh {
-		_, err := writer.WriteString(ch + "\n")
-
+		data := []byte(ch + "\n")
+		_, err = file.Write(data)
 		if err != nil {
-			log.Fatal(err)
+			fmt.Println("Error writing to file:", err)
+			return
 		}
-	}
-	// write buffered data
-	if err := writer.Flush(); err != nil {
-		log.Fatal(err)
 	}
 }
