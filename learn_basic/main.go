@@ -1,6 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+
+	"example.com/basic/examples"
+)
 
 // defining constants
 const (
@@ -146,4 +150,8 @@ func newExample() {
 	personPtr.age = 30
 
 	fmt.Println("Updated Person:", *personPtr) // Output: {Alice 30}
+
+	fmt.Println("--------------------------------------------------")
+
+	examples.Example()
 }
