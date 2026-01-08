@@ -154,4 +154,20 @@ func newExample() {
 	fmt.Println("--------------------------------------------------")
 
 	examples.Example()
+
+	fmt.Println("---------------------------------------------------")
+
+	fmt.Println("fibonacci without recursion for value 5: ", fibonacciwithoutRecursion(5))
+}
+
+// fibonnaci without recursion (dynamic programming)
+func fibonacciwithoutRecursion(n int) int {
+	one, two := 1, 1
+	for i := 1; i <= n-1; i++ {
+		// fmt.Printf(" %d", one)
+		temp := one
+		one = one + two
+		two = temp
+	}
+	return one
 }
