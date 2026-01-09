@@ -52,6 +52,7 @@ func Example2() {
 	defer DisplayLine()
 
 	fmt.Println("Example 2 with select statements")
+	//buffered channel c1
 	c1 := make(chan string, 1)
 	go func() {
 		time.Sleep(2 * time.Second)
@@ -65,6 +66,7 @@ func Example2() {
 		fmt.Println("timeout 1")
 	}
 
+	//buffered channel c2
 	c2 := make(chan string, 1)
 	go func() {
 		time.Sleep(2 * time.Second)

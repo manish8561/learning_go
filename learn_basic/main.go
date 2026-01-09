@@ -164,10 +164,7 @@ func newExample() {
 func fibonacciwithoutRecursion(n int) int {
 	one, two := 1, 1
 	for i := 1; i <= n-1; i++ {
-		// fmt.Printf(" %d", one)
-		temp := one
-		one = one + two
-		two = temp
+		two, one = one, one+two
 	}
 	return one
 }
