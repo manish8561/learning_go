@@ -210,7 +210,7 @@ func Example7() {
 	}
 }
 
-// more example of wait group in with channels
+// workers example with wait group in the channels and goroutine
 func worker(i int, wg *sync.WaitGroup) {
 	defer wg.Done()
 	fmt.Printf("Worker %d starting\n", i)
@@ -250,9 +250,6 @@ func Example9() {
 
 	chan1 := make(chan bool)
 	for i := 1; i <= 5; i++ {
-		// go func(chan bool) {
-		// 	worker2(i, chan1)
-		// }(chan1)
 		go worker2(i, chan1)
 		<-chan1
 	}
