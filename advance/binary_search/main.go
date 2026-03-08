@@ -27,10 +27,37 @@ func binarySearch(arr []int, target int) int {
 	return -1
 }
 
+func recurrsiveBinarySearch(arr []int, left, right, target int) int {
+
+	if left == right {
+		if arr[left] == target {
+			return left
+		} else {
+			return 0
+		}
+	} else {
+		mid := (left + right) / 2
+		if arr[mid] == target {
+			return mid
+		} else if arr[mid] < target {
+			return recurrsiveBinarySearch(arr, mid+1, right, target)
+		} else {
+			return recurrsiveBinarySearch(arr, left, mid-1, target)
+		}
+	}
+
+}
+
 func main() {
 	arr := []int{1, 2, 3, 4, 5, 6, 8, 9}
 	r := binarySearch(arr, 6)
 	fmt.Println("binary search", r)
+
+	fmt.Println("-------------------------------------------------------")
+
+	r = recurrsiveBinarySearch(arr, 0, len(arr)-1, 3)
+
+	fmt.Println("recurrsive binary search result: ", r)
 
 	fmt.Println("-------------------------------------------------------")
 
