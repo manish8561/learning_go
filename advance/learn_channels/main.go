@@ -54,4 +54,7 @@ func main() {
 
 	// basic example
 	fifth.Example12()
+
+	// go orphan example
+	examples.Example12()
 }

@@ -1,6 +1,7 @@
 package examples
 
 import (
+	"context"
 	"fmt"
 	"sync"
 	"sync/atomic"
@@ -301,5 +302,50 @@ func Example11() {
 		fmt.Println(val1)
 	case val2 := <-chanl2:
 		fmt.Println(val2)
+	}
+}
+
+func Example12() {
+	defer DisplayLine()
+	fmt.Println("Example 12 channels go orphans scenario")
+
+	// this is a scenario where go routine is not terminated properly
+	// and it will keep running in the background
+	// this is called go orphan
+
+	/*
+		intial code with go orphan problem
+		ch := make(chan int)
+
+		fmt.Println(<-ch)
+
+	*/
+
+	ctx, cancel := context.WithCancel(context.Background())
+
+	ch := make(chan int)
+	go worker3(ctx, ch)
+
+	ch <- 10
+
+	time.Sleep(3 * time.Second)
+	cancel() // 🔥 stop worker properly
+
+	fmt.Println(<-ch)
+}
+
+func worker3(ctx context.Context, ch chan int) {
+	for {
+		select {
+		case <-ctx.Done():
+			fmt.Println("Goroutine terminating due to context cancellation")
+			ch <- 5
+			return
+		case msg := <-ch:
+			for i := 0; i < msg; i++ {
+				fmt.Println("Processing item:", i)
+				time.Sleep(time.Millisecond * 400)
+			}
+		}
 	}
 }

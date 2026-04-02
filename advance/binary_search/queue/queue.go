@@ -23,7 +23,7 @@ func (q *Queue) Enqueue(val int) {
 	q.items = append(q.items, val)
 }
 
-// Isempty
+// IsEmpty
 func (q *Queue) IsEmpty() bool {
 	return len(q.items) == 0
 }

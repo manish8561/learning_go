@@ -27,6 +27,9 @@ func binarySearch(arr []int, target int) int {
 	return -1
 }
 
+// recurrsive binary search
+// time complexity O(log n) always
+// space complexity O(log n) due to recursion
 func recurrsiveBinarySearch(arr []int, left, right, target int) int {
 
 	if left == right {
